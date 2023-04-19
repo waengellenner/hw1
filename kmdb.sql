@@ -115,7 +115,7 @@ CREATE TABLE movies (
   title TEXT,
   year_released INTEGER,
   MPAA_rating TEXT,
-  studio_id INTEGER
+  studios_id INTEGER
 );
 
 CREATE TABLE studios (
@@ -141,7 +141,7 @@ INSERT INTO movies (
   title,
   year_released,
   MPAA_rating,
-  studio_id
+  studios_id
 )
 VALUES (
   "Batman Begins",
@@ -238,7 +238,14 @@ VALUES (
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+select movies.title, movies.year_released, movies.MPAA_rating, studios.name
+from movies
+inner join studios
+    on (movies.studios_id = studios.id);
+
+-- Batman Begins          2005           PG-13  Warner Bros.
+-- The Dark Knight        2008           PG-13  Warner Bros.
+-- The Dark Knight Rises  2012           PG-13  Warner Bros.
 
 -- Prints a header for the cast output
 .print ""
@@ -246,6 +253,26 @@ VALUES (
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
--- TODO!
+select movies.title, actors.name, roles.character_name
+from movies
+inner join roles
+    on (movies.id = roles.movies_id)
+inner join actors
+    on (actors.id = roles.actors_id);
+
+-- Batman Begins          Christian Bale        Bruce Wayne
+-- Batman Begins          Michael Caine         Alfred
+-- Batman Begins          Liam Neeson           Ra's Al Ghul
+-- Batman Begins          Katie Holmes          Rachel Dawes
+-- Batman Begins          Gary Oldman           Commissioner Gordon
+-- The Dark Knight        Christian Bale        Bruce Wayne
+-- The Dark Knight        Heath Ledger          Joker
+-- The Dark Knight        Aaron Eckhart         Harvey Dent
+-- The Dark Knight        Michael Caine         Alfred
+-- The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
+-- The Dark Knight Rises  Christian Bale        Bruce Wayne
+-- The Dark Knight Rises  Gary Oldman           Commissioner Gordon
+-- The Dark Knight Rises  Tom Hardy             Bane
+-- The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
+-- The Dark Knight Rises  Anne Hathaway         Selina Kyle
