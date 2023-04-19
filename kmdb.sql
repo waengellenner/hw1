@@ -120,9 +120,7 @@ CREATE TABLE movies (
 
 CREATE TABLE studios (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT,
-  CEO TEXT,
-  year_founded INTEGER
+  name TEXT
 );
 
 CREATE TABLE actors (
@@ -165,6 +163,13 @@ VALUES (
   2012,
   "PG-13",
   1
+);
+
+INSERT INTO studios (
+  name
+)
+VALUES (
+  "Warner Bros."
 );
 
 -- Prints a header for the movies output
