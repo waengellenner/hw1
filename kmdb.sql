@@ -136,7 +136,8 @@ CREATE TABLE actors (
 CREATE TABLE roles (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   actors_id INTEGER,
-  movies_id INTEGER
+  movies_id INTEGER,
+  character_name TEXT
 );
 
 -- Insert data into your database that reflects the sample data shown above
